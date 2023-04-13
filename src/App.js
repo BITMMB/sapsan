@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+import SearchForm from "./Components/SearchForm";
+import ResultGrid from "./Components/ResultGrid";
+import Spiner from "./Components/Spiner";
+import Popup from "./Components/Popup";
+import classes from "./App.module.scss";
 
 function App() {
+  const isLoading = useSelector((state) => state.itemslice.isLoading);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.app}>
+      <SearchForm />
+      {isLoading ? <Spiner /> : <ResultGrid />}
+      <Popup />
     </div>
   );
 }
