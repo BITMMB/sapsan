@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   data: [],
+  noData: false,
   searchData: "",
   isLoading: false,
   isStarted: false,
@@ -23,9 +24,6 @@ export const itemslice = createSlice({
   name: "itemslice",
   initialState,
   reducers: {
-    addData: (state, action) => {
-      state.data = action.payload;
-    },
     addSearchData: (state, action) => {
       state.searchData = action.payload;
     },
@@ -42,8 +40,13 @@ export const itemslice = createSlice({
       state.isLoading = false;
       state.isStarted = true;
       state.data = action.payload.results;
+      if (action.payload.results.length < 1) {
+        state.noData = true;
+      } else {
+        state.noData = false;
+      }
     },
-    [fetchData.rejected]: (state, action) => {
+    [fetchData.rejected]: (action) => {
       console.log(action);
     },
   },

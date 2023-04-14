@@ -8,17 +8,14 @@ import classes from "./App.module.scss";
 
 function App() {
   const isLoading = useSelector((state) => state.itemslice.isLoading);
-  const isStarted = useSelector((state) => state.itemslice.isStarted);
-  const data = useSelector((state) => state.itemslice.data);
+  const noData = useSelector((state) => state.itemslice.noData);
+
+  console.log(noData);
   return (
     <div className={classes.app}>
       <SearchForm />
       {isLoading ? <Spiner /> : <ResultGrid />}
-      {!isLoading && isStarted && data.length < 1 ? (
-        <Noresult />
-      ) : (
-        <ResultGrid />
-      )}
+      {!isLoading && noData ? <Noresult /> : null}
       <Popup />
     </div>
   );
