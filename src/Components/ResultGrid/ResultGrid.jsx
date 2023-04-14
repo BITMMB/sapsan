@@ -7,7 +7,13 @@ function ResultGrid() {
   const data = useSelector((state) => state.itemslice.data);
 
   let res = data.map((el) => {
-    return <Item url={el.urls.small} key={Math.random()} />;
+    return (
+      <Item
+        url={el.urls.small}
+        urlForPopup={el.urls.regular}
+        key={Math.random()}
+      />
+    );
   });
   return <div className={classes.grid}>{res}</div>;
 }

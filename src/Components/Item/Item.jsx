@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { changePopupActive } from "../../Redux/itemslice";
 import classes from "./Item.module.scss";
 
-function Item({ url }) {
+function Item({ url, urlForPopup }) {
   const dispatch = useDispatch();
   return (
     <div className={classes.block}>
@@ -12,7 +12,7 @@ function Item({ url }) {
         alt="img"
         src={url}
         onClick={() => {
-          dispatch(changePopupActive(url));
+          dispatch(changePopupActive(urlForPopup));
         }}
       ></img>
     </div>
