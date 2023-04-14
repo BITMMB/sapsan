@@ -4,11 +4,10 @@
   background: #eeeeee;
   border-radius: 12px;
   font-size: 16px;
-  padding: 12px 40px;
+  padding: 12px 11px 12px 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
-
   border: none;
   outline: none;
   color: #000000;
@@ -23,6 +22,13 @@ input:focus::placeholder {
 .input:hover {
   cursor: pointer;
 }
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  background: url("../Icons/clear.svg");
+}
+
 .icon {
   position: absolute;
   left: 10px;
@@ -37,7 +43,7 @@ input:focus::placeholder {
 .searchBlock {
   display: flex;
   gap: 8px;
-  justify-content: center;
+  // justify-content: center;
 }
 .searchBlockCenter {
   display: flex;
